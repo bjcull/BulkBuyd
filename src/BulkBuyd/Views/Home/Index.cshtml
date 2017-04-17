@@ -1,0 +1,140 @@
+﻿@model BulkBuyd.Models.Home.IndexVm
+@{    
+}
+
+<div id="home">
+    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active" style="background: url(/images/warehouse.jpeg) 50% 27%;">
+                <div class="pattern"></div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="carousel-content">
+                                <h2 class="animated fadeInUpBig text-center text-black">BulkBuy'd</h2>
+                                <p class="animated fadeInUpBig text-black text-center">
+                                    Easily organise a group of people trying to buy something in bulk
+                                </p>
+                                <p class="text-center animated fadeInUpBig"><a href="https://bencull.com">Proudly Australian</a>
+                                </p>
+                                <p class="text-center animated fadeInUpBig" style="margin-top: 40px;">
+                                    <a class="btn btn-warning btn-lg" href="~/BulkBuy/New">Create a new Bulk Buy</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="featured">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-title">
+                    <h2>How does it work?</h2>
+                    <p>Easily organise a group of people trying to buy something in bulk.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="featured-container">
+                    <div class="featured-photos">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <h3>Describe your Purchase</h3>
+                    <p>Describe the price list, requirements and other important details.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="featured-container">
+                    <div class="featured-photos">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <h3>Communicate</h3>
+                    <p>Keep your bulk buyers up to date with announcements.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="featured-container">
+                    <div class="featured-photos">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <h3>Single Payment</h3>
+                    <p>Receive a single payment for the total amount pledged by your bulk buyers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tagline">
+    <div class="container">
+        <div class="row">                
+            <div class="col-sm-12">
+                <div class="heading-title">
+                    <h2>Newest Bulk Buys</h2>
+                </div>
+
+                @foreach (var item in Model.BulkBuys)
+                {
+                    <div class="bulk-buy-list-item clearfix">
+                        <div class="pull-left m-r-20">
+                            <img src="~/images/delivery_truck.png" class="img-responsive"/>
+                        </div>
+                        <div class="pull-left details">
+                            <h2>
+                                <a href="@Url.Action("Details", "BulkBuy", new {id = item.Id})" class="">@item.Name</a>
+                            </h2>
+                            <p>@item.DescriptionSummary</p>
+                            <strong>Closing Date: @(item.DueDate.ToString("dddd, dd MMMM yyyy"))</strong>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="catalogue">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-title">
+                    <h2>Get Started</h2>
+                    <button class="btn btn-warning btn-lg">Create a New Bulk Buy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Need some help?</h3>
+                <p>I'm an Aussie homebrewer who writes software for a living. If you need a hand getting your bulk buy up and running just let me know.</p>
+            </div>
+        </div>
+        <div class="row" id="theteam">
+            <div class="col-sm-offset-4 col-sm-4">
+                <a href="https://bencull.com" target="_blank">
+                    <div class="team-container">
+                        <div class="featured-photos">
+                            <img src="~/images/BenCull_square_200x200.jpg" class="img-responsive img-rounded" alt="chandra noor rachman">
+                        </div>
+                        <h3 style="color:#fff">
+                            Ben Cull
+                        </h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

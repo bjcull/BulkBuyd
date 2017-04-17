@@ -1,0 +1,32 @@
+﻿{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+  "dependencies": {
+    "NETStandard.Library": "1.6.1",
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.1",
+    "Microsoft.EntityFrameworkCore.Design": "1.1.1",
+    "BulkBuyd.Domain": {
+      "version": "*",
+      "target": "project"
+    },
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.1.1"
+  },
+
+  "tools": {
+    "Microsoft.EntityFrameworkCore.Tools.DotNet": "1.0.0-preview3-final"
+  },
+
+  "frameworks": {
+    "netcoreapp1.1": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.1.0",
+          "type": "platform"
+        }
+      },
+      "imports": "dnxcore50"
+    }
+  }
+}

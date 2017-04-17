@@ -1,0 +1,86 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions
+@model BulkBuyd.Models.BulkBuy.ViewVm
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "_Layout";
+}
+
+
+<div class="heads" style="background: url(/images/warehouse.jpeg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> @Model.Name</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- begin:content -->
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                @Html.Raw(Model.DescriptionHtml)
+                
+                <hr />
+                <h2>Current Pledges</h2>                
+                <ul class="list-unstyled list-pledges">
+                    @foreach (var pledge in Model.Pledges)
+                    {
+                        <li>
+                            <p>@pledge.OrderDetails</p>
+                            <div class="pull-right">
+                                <span class="display-name"> - <strong>@pledge.DisplayName</strong></span>
+                                <img class="img-circle" gravatar-email="@pledge.UserEmail" gravatar-size="30" gravatar-default-image="identicon" />
+                            </div>
+                        </li>
+                    }
+                    @if (!Model.Pledges.Any())
+                    {
+                        <li class="text-center">There are no pledges yet</li>
+                    }
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                @if (Model.IsPledged)
+                {
+                    <h2>You're In!</h2>
+                }
+                else
+                {
+                    <h2>Join Bulk Buy</h2>
+                }
+                @if (Model.IsLoggedIn)
+                {
+                    using (Html.BeginForm("Save", "Pledge", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(x => x.Id)
+                        <p>If you know the total price, you can set your Pledge Amount. If prices aren't available yet, just put zero.</p>
+                        <div class="form-group">
+                            <label>Pledge Amount</label>
+                            @Html.TextBoxFor(x => x.PledgeAmount, new {@class = "form-control"})
+                        </div>
+                        <div class="form-group">
+                            <label>Order Details</label>
+                            @Html.TextAreaFor(x => x.OrderDetails, new {@class = "form-control", rows = 7})
+                        </div>
+                        if (Model.IsPledged)
+                        {
+                            <button class="btn btn-warning btn-block">Update Details</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-warning btn-block">Join Bulk Buy</button>
+                        }
+                    }
+                }
+                else
+                {
+                    <p>To join in, you need to sign up.</p>
+                    <a href="@Url.Action("Login", "Account", new {returnUrl = Model.RedirectUrl})" class="btn btn-warning btn-block">Login to Join</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

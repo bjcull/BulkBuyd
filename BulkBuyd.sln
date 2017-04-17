@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AA53B786-FC2B-438B-A04E-67C82F7C5D86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D6274DA1-E77B-422C-BB52-B00F96AEA41C}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BulkBuyd", "src\BulkBuyd\BulkBuyd.xproj", "{F0CEE65B-3E41-4F71-AB4B-7D55D71D59ED}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BulkBuyd.Data", "src\BulkBuyd.Data\BulkBuyd.Data.xproj", "{099061C2-0D0D-4087-A362-89D59D0D2517}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BulkBuyd.Domain", "src\BulkBuyd.Domain\BulkBuyd.Domain.xproj", "{90A380F5-8885-4813-A940-17B3780149AC}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BulkBuyd.Services", "src\BulkBuyd.Services\BulkBuyd.Services.xproj", "{9CAD5940-6E09-4F74-A8F1-3C37050659AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0CEE65B-3E41-4F71-AB4B-7D55D71D59ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0CEE65B-3E41-4F71-AB4B-7D55D71D59ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0CEE65B-3E41-4F71-AB4B-7D55D71D59ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0CEE65B-3E41-4F71-AB4B-7D55D71D59ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{099061C2-0D0D-4087-A362-89D59D0D2517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{099061C2-0D0D-4087-A362-89D59D0D2517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{099061C2-0D0D-4087-A362-89D59D0D2517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{099061C2-0D0D-4087-A362-89D59D0D2517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90A380F5-8885-4813-A940-17B3780149AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A380F5-8885-4813-A940-17B3780149AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A380F5-8885-4813-A940-17B3780149AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A380F5-8885-4813-A940-17B3780149AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CAD5940-6E09-4F74-A8F1-3C37050659AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CAD5940-6E09-4F74-A8F1-3C37050659AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CAD5940-6E09-4F74-A8F1-3C37050659AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CAD5940-6E09-4F74-A8F1-3C37050659AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F0CEE65B-3E41-4F71-AB4B-7D55D71D59ED} = {AA53B786-FC2B-438B-A04E-67C82F7C5D86}
+		{099061C2-0D0D-4087-A362-89D59D0D2517} = {AA53B786-FC2B-438B-A04E-67C82F7C5D86}
+		{90A380F5-8885-4813-A940-17B3780149AC} = {AA53B786-FC2B-438B-A04E-67C82F7C5D86}
+		{9CAD5940-6E09-4F74-A8F1-3C37050659AA} = {AA53B786-FC2B-438B-A04E-67C82F7C5D86}
+	EndGlobalSection
+EndGlobal

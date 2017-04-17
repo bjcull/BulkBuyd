@@ -1,0 +1,91 @@
+﻿@model BulkBuyd.Models.Payments.MethodVm
+@{
+    ViewBag.Title = "Payment Method";
+}
+
+<div class="heads" style="background: url(/images/warehouse.jpeg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Payment Method</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- begin:content -->
+<div class="page-content">
+    <div class="container">
+        @if (ViewData.ModelState.Any(x => string.IsNullOrEmpty(x.Key)))
+        {
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="alert alert-danger">
+                        <strong>Error</strong>
+                        <ul class="list-unstyled">
+                            @foreach (var error in ViewData.ModelState.Where(x => string.IsNullOrEmpty(x.Key)).SelectMany(x => x.Value.Errors))
+                            {
+                                <li>@error.ErrorMessage</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (!Model.HasPayerAccount)
+        {
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Add Payment Method</h2>
+                    <p>BulkBuy'd uses Pinch Payments to make secure bank transfers to the Bulk Buy organiser.</p>
+                    <p>
+                        You need to add valid bank account details to join a Bulk Buy. If you decide to organise
+                        your own bulk buy, we'll also use this account to send you the funds.
+                    </p>
+                    <a href="@Model.PinchUrl" class="btn btn-warning">Add Bank Account Details</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Payment Method</h2>
+                    <p>BulkBuy'd uses Pinch Payments to make secure bank transfers to the Bulk Buy organiser.</p>
+                    <div class="card">
+                        @using (Html.BeginForm("Remove", "Payment"))
+                        {
+                            <button id="removeAccount" type="button" class="btn btn-danger pull-right">Remove Account</button>
+                        }
+                        <label>Bank Account</label>
+                        <div>
+                            <div>@Model.AccountName</div>
+                            <div>@Model.AccountBsb</div>
+                            <div>@Model.AccountNumber</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $("#removeAccount").click(function() {
+            swal({
+                title: 'Are you sure?',
+                text: 'This will not cancel any payments already in progress.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, keep it'
+            }).then(function() {
+                    $("#removeAccount").closest("form").submit();
+                },
+                function(dismiss) {
+                });
+        });
+    </script>
+}

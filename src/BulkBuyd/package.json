@@ -1,0 +1,14 @@
+{
+  "name": "bulkbuyd",
+  "version": "1.0.0",
+  "author": "Ben Cull",
+  "description": "",
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "bootstrap": "3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "3.2.1",
+    "sweetalert2": "6.6.0" 
+  },
+  "devDependencies": {}
+}
