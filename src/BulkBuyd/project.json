@@ -100,12 +100,12 @@
       "**/*.cshtml",
       "appsettings.json",
       "web.config",
-      "node_modules"
+      "package.json"
     ]
   },
 
   "scripts": {
-    "prepublish": [ "npm install", "dotnet bundle" ],
+    "prepublish": [ "dotnet bundle" ],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
 }
