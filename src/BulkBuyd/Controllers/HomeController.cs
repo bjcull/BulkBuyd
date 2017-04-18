@@ -23,14 +23,9 @@ namespace BulkBuyd.Controllers
         {
             var model = new IndexVm();
 
-            var buys = _context.BulkBuys
+            model.BulkBuys = _context.BulkBuys
                 .OrderByDescending(x => x.CreatedDate)
                 .Select(BulkBuyDto.Projection)
-                .ToList();
-
-            model.BulkBuys = buys
-                .AsQueryable()
-                .Select(BulkBuyVm.Projection)
                 .ToList();
 
             return View(model);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using BulkBuyd.Domain.Entities;
+using BulkBuyd.Domain.Helpers;
 using Markdig;
 
 namespace BulkBuyd.Domain.DTOs
@@ -17,6 +18,8 @@ namespace BulkBuyd.Domain.DTOs
 
         public string OwnerId { get; set; }
         public string OwnerName { get; set; }
+
+        public string DescriptionSummary => StripHtmlHelper.StripHtml(Markdown.ToHtml(Description));
 
         public static Expression<Func<BulkBuy, BulkBuyDto>> Projection
         {

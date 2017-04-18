@@ -6,7 +6,8 @@
     "BulkBuyd.Domain": {
       "version": "*",
       "target": "project"
-    }
+    },
+    "Markdig": "0.10.7"
   },
 
   "frameworks": {

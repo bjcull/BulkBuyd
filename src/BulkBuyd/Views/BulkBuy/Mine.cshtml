@@ -1,0 +1,41 @@
+﻿@model BulkBuyd.Models.BulkBuy.MineVm
+
+@{
+    ViewBag.Title = "My Bulk Buys";
+}
+
+<div class="heads" style="background: url(/images/warehouse.jpeg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> My Bulk Buys</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- begin:content -->
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                @foreach (var item in Model.BulkBuys)
+                {
+                    <div class="bulk-buy-list-item clearfix">
+                        <div class="pull-left m-r-20">
+                            <img src="~/images/delivery_truck.png" class="img-responsive" />
+                        </div>
+                        <div class="pull-left details">
+                            <h2>
+                                <a href="@Url.Action("Details", "BulkBuy", new {id = item.Id})" class="">@item.Name</a>
+                            </h2>
+                            <p>@item.DescriptionSummary</p>
+                            <strong>Closing Date: @(item.DueDate.ToString("dddd, dd MMMM yyyy"))</strong>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

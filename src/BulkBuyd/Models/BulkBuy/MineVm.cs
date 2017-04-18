@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BulkBuyd.Domain.DTOs;
+using BulkBuyd.Models.Home;
 
-namespace BulkBuyd.Models.Home
+namespace BulkBuyd.Models.BulkBuy
 {
-    public class IndexVm
+    public class MineVm
     {
         public List<BulkBuyDto> BulkBuys { get; set; }
 
-        public IndexVm()
+        public MineVm()
         {
             BulkBuys = new List<BulkBuyDto>();
         }

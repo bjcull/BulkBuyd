@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BulkBuyd.Data;
+using BulkBuyd.Domain.DTOs;
 using BulkBuyd.Domain.Entities;
 using BulkBuyd.Domain.Other;
 using BulkBuyd.Domain.Services;
 using BulkBuyd.Models.BulkBuy;
+using BulkBuyd.Models.Home;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +30,23 @@ namespace BulkBuyd.Controllers
             _userManager = userManager;
             _shortCodeService = shortCodeService;
             _signInManager = signInManager;
+        }
+
+        public IActionResult Mine()
+        {
+            var model = new MineVm();
+
+            var userId = _userManager.GetUserId(User);
+
+            model.BulkBuys = _context.BulkBuys
+                .Where(x =>
+                    x.OwnerId == userId
+                    || x.Pledges.Any(y => y.UserId == userId))
+                .OrderByDescending(x => x.CreatedDate)
+                .Select(BulkBuyDto.Projection)
+                .ToList();
+
+            return View(model);
         }
 
         [AllowAnonymous]

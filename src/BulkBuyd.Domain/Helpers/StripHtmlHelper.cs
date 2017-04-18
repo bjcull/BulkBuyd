@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
-namespace BulkBuyd.Services.Helpers
+namespace BulkBuyd.Domain.Helpers
 {
     public class StripHtmlHelper
     {
