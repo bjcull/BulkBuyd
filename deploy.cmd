@@ -83,8 +83,8 @@ call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%" -t "%DEPLOYMENT_
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 5. Install npm packages
-IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
-  pushd %DEPLOYMENT_TARGET%
+IF EXIST "%DEPLOYMENT_TARGET%\src\BulkBuyd\package.json" (
+  pushd "%DEPLOYMENT_TARGET%\src\BulkBuyd"
   call npm install --production
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
