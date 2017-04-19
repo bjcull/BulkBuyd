@@ -17,6 +17,7 @@
     margin: 0 0 5px 0; }
 
 .list-pledges li {
+  margin-bottom: 10px;
   background-color: #fff;
   overflow: hidden;
   padding: 10px;

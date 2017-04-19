@@ -11,5 +11,7 @@ namespace BulkBuyd.Models.AccountViewModels
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+        [Required]
+        public string DisplayName { get; set; }
     }
 }

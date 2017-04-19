@@ -1,6 +1,7 @@
-﻿<li><a href="@Url.Action("Mine", "BulkBuy")">My Bulk Buys</a></li>
+﻿@model BulkBuyd.Domain.Entities.User
+<li><a href="@Url.Action("Mine", "BulkBuy")">My Bulk Buys</a></li>
 <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Model.DisplayName <b class="caret"></b></a>
     <ul class="dropdown-menu">
         <li><a href="@Url.Action("Method", "Payment")">Payment Method</a></li>
         <li class="divider"></li>

@@ -124,6 +124,11 @@ namespace BulkBuyd
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
+            app.UseGoogleAuthentication(new GoogleOptions()
+            {
+                ClientId = Configuration["AppSettings:Google:ClientId"],
+                ClientSecret = Configuration["AppSettings:Google:ClientSecret"]
+            });
 
             app.UseMvc(routes =>
             {
