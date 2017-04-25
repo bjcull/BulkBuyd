@@ -8,9 +8,10 @@ using BulkBuyd.Data;
 namespace BulkBuyd.Data.Migrations
 {
     [DbContext(typeof(BulkBuydContext))]
-    partial class BulkBuydContextModelSnapshot : ModelSnapshot
+    [Migration("20170420100247_OrganiserMerchant2")]
+    partial class OrganiserMerchant2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")

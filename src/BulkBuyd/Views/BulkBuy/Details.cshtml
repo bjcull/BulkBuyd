@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.Http.Extensions
+﻿@using BulkBuyd.Models.BulkBuy
+@using Microsoft.AspNetCore.Http.Extensions
 @model BulkBuyd.Models.BulkBuy.ViewVm
 @{
     ViewBag.Title = Model.Name;
@@ -16,15 +17,19 @@
     </div>
 </div>
 
+@Html.Partial("_AdminMenu", new AdminMenuVm {BulkBuyId = Model.Id, CurrentAction = "Details"})
+
 <!-- begin:content -->
 <div class="page-content">
     <div class="container">
+        
+
         <div class="row">
             <div class="col-sm-9">
                 @Html.Raw(Model.DescriptionHtml)
-                
-                <hr />
-                <h2>Current Pledges</h2>                
+
+                <hr/>
+                <h2>Current Pledges</h2>
                 <ul class="list-unstyled list-pledges">
                     @foreach (var pledge in Model.Pledges)
                     {
@@ -32,7 +37,7 @@
                             <p>@pledge.OrderDetails</p>
                             <div class="pull-right">
                                 <span class="display-name"> - <strong>@pledge.DisplayName</strong></span>
-                                <img class="img-circle" gravatar-email="@pledge.UserEmail" gravatar-size="30" gravatar-default-image="identicon" />
+                                <img class="img-circle" gravatar-email="@pledge.UserEmail" gravatar-size="30" gravatar-default-image="identicon"/>
                             </div>
                         </li>
                     }

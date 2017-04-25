@@ -13,6 +13,7 @@ namespace BulkBuyd.Models.BulkBuy
         public string UserEmail { get; set; }
         public string DisplayName { get; set; }
         public string OrderDetails { get; set; }
+        public decimal PledgeAmount { get; set; }
 
         public static Expression<Func<Pledge, PledgeVm>> Projection
         {
@@ -23,7 +24,8 @@ namespace BulkBuyd.Models.BulkBuy
                     UserId = x.UserId,
                     OrderDetails = x.OrderDetails,
                     DisplayName = x.User.DisplayName,
-                    UserEmail = x.User.Email
+                    UserEmail = x.User.Email,
+                    PledgeAmount = x.PledgeAmount
                 };
             }
         }

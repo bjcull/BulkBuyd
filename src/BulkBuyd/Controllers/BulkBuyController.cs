@@ -116,7 +116,7 @@ namespace BulkBuyd.Controllers
             return RedirectToAction("Details", new {id = bulkBuy.DisplayId});
         }
 
-        public IActionResult Admin(string id)
+        public IActionResult Edit(string id)
         {
             var userId = _userManager.GetUserId(User);
 
@@ -132,14 +132,19 @@ namespace BulkBuyd.Controllers
                 return NotFound();
             }
 
-            var model = AdminVm.FromEntity(buy);
+            var model = EditVm.FromEntity(buy);
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Admin(AdminVm model)
+        public IActionResult Edit(EditVm model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var userId = _userManager.GetUserId(User);
 
             var buy = _context.BulkBuys
@@ -159,6 +164,28 @@ namespace BulkBuyd.Controllers
             buy.DueDate = model.ClosingDate;
 
             _context.SaveChanges();
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> Admin(string id)
+        {
+            var buy = _context.BulkBuys
+                .Include(x => x.Pledges)
+                .ThenInclude(x => x.User)
+                .Include(x => x.Owner)
+                .FirstOrDefault(x =>
+                    x.DisplayId == id
+                    && !x.IsDeleted);
+
+            if (buy == null)
+            {
+                return NotFound();
+            }
+
+            var model = new AdminVm();
+
+            model.Pledges = buy.Pledges.AsQueryable().Select(PledgeVm.Projection);
 
             return View(model);
         }

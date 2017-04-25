@@ -1,0 +1,15 @@
+﻿@model BulkBuyd.Models.BulkBuy.AdminMenuVm
+
+<div class="admin-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="nav navbar-nav">
+                    <li><a class="@(Model.CurrentAction == "Details" ? "active" : "")" href="@Url.Action("Details", "BulkBuy", new {id = Model.BulkBuyId})">Details</a></li>
+                    <li><a class="@(Model.CurrentAction == "Edit" ? "active" : "")" href="@Url.Action("Edit", "BulkBuy", new {id = Model.BulkBuyId})">Edit</a></li>
+                    <li><a class="@(Model.CurrentAction == "Admin" ? "active" : "")" href="@Url.Action("Admin", "BulkBuy", new {id = Model.BulkBuyId})">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

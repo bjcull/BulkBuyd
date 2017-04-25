@@ -8,9 +8,10 @@ using BulkBuyd.Data;
 namespace BulkBuyd.Data.Migrations
 {
     [DbContext(typeof(BulkBuydContext))]
-    partial class BulkBuydContextModelSnapshot : ModelSnapshot
+    [Migration("20170420091956_OrganiserMerchant")]
+    partial class OrganiserMerchant
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -104,8 +105,6 @@ namespace BulkBuyd.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("PinchMerchantId");
-
-                    b.Property<string>("PinchMerchantSecretKey");
 
                     b.Property<string>("PinchPayerId");
 

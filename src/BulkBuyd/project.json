@@ -58,7 +58,7 @@
     "Serilog.Extensions.Logging": "1.4.0",
     "Markdig": "0.10.7",
     "GravatarHelper.AspNetCore": "1.0.0",
-    "Pinch.SDK": "0.9.0"
+    "Pinch.SDK": "0.9.1"
   },
 
   "tools": {

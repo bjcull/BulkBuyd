@@ -16,6 +16,7 @@ using BulkBuyd.Domain.Services;
 using BulkBuyd.Models;
 using BulkBuyd.Services;
 using BulkBuyd.Services.Helpers;
+using BulkBuyd.Services.Organiser;
 using BulkBuyd.Settings;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.FileProviders;
@@ -81,6 +82,7 @@ namespace BulkBuyd
 
             services.AddTransient<IShortcodeService, ShortcodeService>();
             services.AddSingleton<IRandomService, RandomService>();
+            services.AddTransient<OrganiserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

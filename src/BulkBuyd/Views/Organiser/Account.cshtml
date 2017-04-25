@@ -1,0 +1,101 @@
+﻿@model BulkBuyd.Models.Organiser.AccountVm
+@{
+    ViewBag.Title = "Organiser Account";
+}
+
+<div class="heads" style="background: url(/images/warehouse.jpeg) 50% 27%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><span>//</span> Organiser Account</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- begin:content -->
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <p>To organise a bulk buy, you need to provide more information.</p>
+            </div>
+        </div>
+        @if (ViewData.ModelState.Any(x => string.IsNullOrEmpty(x.Key)))
+        {
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="alert alert-danger">
+                        <strong>Error</strong>
+                        <ul class="list-unstyled">
+                            @foreach (var error in ViewData.ModelState.Where(x => string.IsNullOrEmpty(x.Key)).SelectMany(x => x.Value.Errors))
+                            {
+                                <li>@error.ErrorMessage</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                @using (Html.BeginForm("Account", "Organiser", FormMethod.Post, new { @class = "" }))
+                {
+
+                    <h3 class="text-center">Organiser Details</h3>
+                    <hr>
+                    <div class="form-group">
+                        <label class="">Street Address</label>
+                        <div class="">
+                            @Html.TextBoxFor(x => x.StreetAddress, new { @class = "form-control" })
+                            <div class="help-block">
+                                @Html.ValidationMessageFor(x => x.StreetAddress)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="">Postcode</label>
+                                <div class="">
+                                    @Html.TextBoxFor(x => x.Postcode, new { @class = "form-control" })
+                                    <div class="help-block">
+                                        @Html.ValidationMessageFor(x => x.Postcode)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">                            
+                            <div class="form-group">
+                                <label class="">Suburb</label>
+                                <div class="">
+                                    @Html.TextBoxFor(x => x.Suburb, new { @class = "form-control" })
+                                    <div class="help-block">
+                                        @Html.ValidationMessageFor(x => x.Suburb)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="">Mobile Number</label>
+                        <div class="">
+                            @Html.TextBoxFor(x => x.MobileNumber, new { @class = "form-control" })
+                            <div class="help-block">
+                                @Html.ValidationMessageFor(x => x.MobileNumber)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="">
+                            <button type="submit" class="btn btn-warning">Update Details</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

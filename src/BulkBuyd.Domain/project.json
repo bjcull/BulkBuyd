@@ -4,7 +4,8 @@
   "dependencies": {
     "NETStandard.Library": "1.6.1",
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.1",
-    "Markdig": "0.10.7"
+    "Markdig": "0.10.7",
+    "FluentValidation": "6.4.1"
   },
 
   "frameworks": {

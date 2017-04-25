@@ -11,5 +11,12 @@ namespace BulkBuyd.Domain.Entities
         public string DisplayName { get; set; }
 
         public string PinchPayerId { get; set; }
+
+        public string PinchMerchantId { get; set; }
+        public string PinchMerchantSecretKey { get; set; }
+
+        public string StreetAddress { get; set; }
+        public string Postcode { get; set; }
+        public string Suburb { get; set; }
     }
 }

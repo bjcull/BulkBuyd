@@ -1,8 +1,11 @@
-﻿@model BulkBuyd.Models.BulkBuy.AdminVm
-
+﻿@using BulkBuyd.Models.BulkBuy
+@using Microsoft.AspNetCore.Http.Extensions
+@model BulkBuyd.Models.BulkBuy.AdminVm
 @{
-    ViewBag.Title = $"Edit - {Model.Name}";
+    ViewBag.Title = Model.Name;
+    Layout = "_Layout";
 }
+
 
 <div class="heads" style="background: url(/images/warehouse.jpeg) 50% 27%;">
     <div class="container">
@@ -14,56 +17,57 @@
     </div>
 </div>
 
+@Html.Partial("_AdminMenu", new AdminMenuVm {BulkBuyId = Model.Id, CurrentAction = "Admin"})
+
 <!-- begin:content -->
 <div class="page-content">
-    <div class="container">
+    <div class="container">       
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                @using (Html.BeginForm("Admin", "BulkBuy", FormMethod.Post, new { @class = "" }))
-                {
-                    @Html.HiddenFor(x => x.Id)
+            <div class="col-sm-8">
+                <h2>Manage Pledges</h2>
 
-                    <h3 class="text-center">Current Details</h3>
-                    <hr>
-                    <div class="form-group">
-                        <label class="">Name</label>
-                        <div class="">
-                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-                            <div class="help-block">
-                                @Html.ValidationMessageFor(x => x.Name)
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="">Closing Date</label>
-                        <div class="">
-                            @Html.TextBoxFor(x => x.ClosingDate, new { type = "date", @class = "form-control" })
-                            <div class="help-block">
-                                @Html.ValidationMessageFor(x => x.ClosingDate)
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="">Description</label>
-                        <div class="">
-                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", rows = 10 })
-                            <div class="help-block">
-                                @Html.ValidationMessageFor(x => x.Description)
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="">
-                            <button type="submit" class="btn btn-warning">Update Details</button>
-                        </div>
-                    </div>
-                }
+                <table class="table pledge-table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th class="text-right">Amount</th>
+                        <th class="text-right"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var pledge in Model.Pledges)
+                    {
+                        <tr>
+                            <td>@pledge.DisplayName</td>
+                            <td>Ready to be Scheduled</td>
+                            <td class="text-right">@pledge.PledgeAmount.ToString("C")</td>
+                            <td class="text-right"><button class="btn btn-default"><i class="fa fa-check"></i> Mark as Delivered</button></td>
+                        </tr>
+                    }
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td class="text-right"><strong>@Model.Pledges.Sum(x => x.PledgeAmount).ToString("C")</strong></td>
+                        <td></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="col-sm-4">
+                <h2>Manage Bulk Buy</h2>
+                
+                <div class="form-group">
+                    <label>Step 1</label>
+                    <button class="btn btn-default btn-block">Close Bulk Buy</button>
+                </div>
+                <div class="form-group">
+                    <label>Step 2</label>
+                    <button class="btn btn-default btn-block">Schedule All Payments</button>
+                </div>
+                
             </div>
         </div>
     </div>
 </div>
-<!-- end:content -->
